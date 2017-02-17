@@ -1,11 +1,8 @@
-
-function createRecordatorio() {
+function z_createRecordatorio() {
 #str_fecha=$( date -d $fecha +'%d_%m_%Y')	
 
     echo "Titulo: $titulo\n \n" > ~/recordatorios/"$VALID_ID".sh
     echo "Descripcion: $descripcion \n" >> ~/recordatorios/"$VALID_ID".sh
-    
-    
     
     echo "Titulo: $titulo" > ~/recordatorios/"$VALID_ID".sh
     echo "Descripcion: $descripcion" > ~/recordatorios/"$VALID_ID".sh

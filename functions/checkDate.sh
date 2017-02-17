@@ -18,7 +18,7 @@ function checkDate() {
       
 	#Si la conversión ha funcionado...
 		case $? in
-			0)	#Llamamos a la funcion checkTimeFormat, pasandole como parámetro la hora ($2)
+			0)
 				checkTimeFormat $2;;
 			1)
 				echo "El formato de la fecha \"$1\" no es correcta"

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#Valor de la fecha recibido por la funcion de Marc.
+valor='15 30 5 5 5'
+#ID de la tarea recibido por la funcion de Diego
+valor2="12345678"
+function getRecordatorio(){
+
+	valor3=`find ~/recordatorios/ -name "$valor2*"`
+
+	#Comprobamos si el usuario es root.
+	if [ "$USER" = "root" ];
+	    then
+	    #Añadimos los valores al archivo cron del root.
+	    echo $1 $USER $valor3 >> /etc/crontab
+
+
+        #Falta añadir al archivo histoy
+	    echo "...done."
+	    
+	else
+	    #Si no es root, comprobamos si tiene creado un archivo cron.
+	    if [ ! -f "/var/spool/cron/crontabs/$USER" ]; 
+	        then
+	        #Si no tiene un archivo le creamos un archivo con el parametro -u y cogiendo la estructura de un archivo auxiliar. (Temporalmente en la carpeta home)
+		    crontab -u $USER ~/recordatorios/crontabsample.txt
+            
+            #Error de permisos al intentar añadir al archivo cron mediante la redireccion.
+            echo $1 $USER $valor3 >> "/var/spool/cron/crontabs/$USER"
+	        else
+	        echo $1 $USER $valor3 >> "/var/spool/cron/crontabs/$USER"
+	    fi
+    fi
+}
+
+getRecordatorio "$valor"

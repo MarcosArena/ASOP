@@ -9,7 +9,7 @@ function z_getRecordatorio() {
 			--entry-text="Descripción..."`	
 			if [ $? = 0 ]
 				then 
-                $descripcion=$descripcion                
+                descripcion=$descripcion                
                 #then tituloyDescripcion="$titulo $descripcion"
 				#echo $tituloyDescripcion
 			else
@@ -27,6 +27,6 @@ function z_getRecordatorio() {
 				z_getRecordatorio
 			fi
 	fi  		
-finalstring="$timeAndDate $titulo $descripcion"
-z_createRecordatorio "$titulo" "$descripcion"
+finalstring="$timeAndDate $titulo $descripcion $usuario"
+z_createRecordatorio "$titulo" "$descripcion" "$usuario"
 }

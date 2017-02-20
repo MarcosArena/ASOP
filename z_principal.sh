@@ -12,10 +12,31 @@
 
 VALID_ID=$(getFilename)
 
-z_getDate
+if [ $USER==root ]
+then 
+    zenity --question --title="¿Usuario?" --text="¿Quieres crear un recordatorio para otro usuario? \n\n Cancelar para añadir solo a root." 
+    
+    if [ $? = 0 ]
+        then usuario=`zenity --entry --title="Usuario" --text="Añade el nombre del usuario" \
+			--entry-text="Usuario..."`
+            if [ $usuario ]
+                then usuario = $usuario                
+                z_getDate                
+            else 
+                exit
+            fi
+    else 
+        usuario="root"
+        z_getDate
+    fi
+else 
+    usuario=$usuario
+    z_getDate
+fi
 
+echo $usuario    
 echo $recordatorio 
 echo $finalstring
-bash ~/recordatorios/"$VALID_ID".sh
+bash $ruta_script/"$VALID_ID".sh
 #getTimeAndDate 
 #getRecordatorio

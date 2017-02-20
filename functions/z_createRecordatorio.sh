@@ -40,7 +40,7 @@ esac    " >> ~/recordatorios/"$VALID_ID".sh
     if [ $?=0 ]
         then 
         now=$(date +'%m/%d/%Y a las %H:%M')
-        echo "Se ha creado el script: $HOME/recordatorios/"$VALID_ID".sh"
+        echo "Se ha creado el script: $ruta_script/"$VALID_ID".sh"
         echo echo "[ CREATED ] Fecha: \"$now\"     ID del recordatorio: \"$VALID_ID\"     Titulo: \"$titulo\"     Creado por: \"$USER\"" >> $HOME/recordatorios/historial/history.txt
     else
         echo "Error al crear el script."

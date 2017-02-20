@@ -1,7 +1,7 @@
 
 function getRecordatorio() {
 
-if [ $USER == root ]
+if [ $USER == "root" ]
     then
     titulo=$2
     descripcion=$3

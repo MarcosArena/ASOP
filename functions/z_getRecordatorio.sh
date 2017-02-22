@@ -27,6 +27,6 @@ function z_getRecordatorio() {
 				z_getRecordatorio
 			fi
 	fi  		
-finalstring="$timeAndDate $titulo $descripcion $usuario"
+
 z_createRecordatorio "$titulo" "$descripcion" "$usuario"
 }

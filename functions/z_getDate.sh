@@ -7,7 +7,7 @@ function z_getDate () {
 	fecha=`zenity --calendar \
 		--title='Seleccione una fecha' \
 		--text='Haga click en una fecha para seleccionarla.' \
-		--date-format='%d;%m;%w' \
+		--date-format='%d;%b;%w' \
 		--day=$hoy_dia --month=$hoy_mes --year=2017`
 
 	if [ $fecha ]

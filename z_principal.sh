@@ -12,7 +12,8 @@
 
 VALID_ID=$(getFilename)
 
-if [ $USER==root ]
+
+if [ $USER == "root" ]
 then 
     zenity --question --title="¿Usuario?" --text="¿Quieres crear un recordatorio para otro usuario? \n\n Cancelar para añadir solo a root." 
     

@@ -8,6 +8,7 @@
 . ./functions/z_getRecordatorio.sh
 . ./functions/z_createRecordatorio.sh
 . ./functions/z_getTime.sh
+. ./functions/addToCron.sh
 
 
 VALID_ID=$(getFilename)
@@ -35,9 +36,14 @@ else
     z_getDate
 fi
 
-echo $usuario    
-echo $recordatorio 
-echo $finalstring
-bash $ruta_script/"$VALID_ID".sh
+finalString="$timeAndDate $usuario bash $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh"
+
+#echo $finalString
+#echo $timeAndDate
+
+addToCron
+
+
+#bash $ruta_script/"$VALID_ID".sh
 #getTimeAndDate 
 #getRecordatorio

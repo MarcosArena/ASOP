@@ -1,24 +1,30 @@
 #!/bin/bash
 
-. generateID.sh
-generateID
-idimpostor='12345678'
+#idimpostor="$tituloWithUnder"_"$VALID_ID"
 #Valor de la fecha recibido por la funcion de Marc.
-valor='50 10 5 5 5'
+#valor='50 10 5 5 5'
 #ID de la tarea recibido por la funcion de Diego
 
 function addToCron(){
 
     #Falta cambiar la variable $idimpostor por la de $id de la funcion de Diego.
     
-	valor3=`find ~/recordatorios/ -name "$idimpostor"`
-    cadena="$valor $USER $valor3"
-    echo $cadena
+	#valor3=`find ~/recordatorios/ -name "$VALID_ID".sh`
+    
+    #valor3='/home/marc/recordatorios/Examen_ASOP_Gv5gwQKY.sh'
+    echo $finalString
+    
+    #echo $timeAndDate
+    #exit
+    #valor2="bash"
+    #cadena="$timeAndDate $valor2 $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh"
+    #echo $cadena
+    
 	#Comprobamos si el usuario es root.
 	if [ $USER = "root" ];
 	    then
         #Añadimos los valores al archivo crontab del usuario root.
-	    echo $1 $USER $valor3 >> /etc/crontab    
+	    echo $finalString >> /etc/crontab    
 	    echo "...done."
 	    
 	else
@@ -32,14 +38,12 @@ function addToCron(){
             #Introducimos los valores dentro del archivo.
             echo "Añadiendo la tarea."
             
-            crontab -l | { cat; echo "$cadena"; } | crontab -
+            crontab -l | { cat; echo "$finalString"; } | crontab -
             echo "...done."
 	        else
-            crontab -l | { cat; echo "$cadena"; } | crontab -
+            crontab -l | { cat; echo "$finalString"; } | crontab -
             
 	        
 	    fi
     fi     
 }
-
-addToCron

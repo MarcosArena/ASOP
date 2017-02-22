@@ -1,11 +1,14 @@
 function z_getDate () {
-	
+
+    hoy_dia=$(date +'%d')
+    hoy_mes=$(date +'%m')
+    
     #Dialogo de Zenity que pide una fecha y la transf. en %d(dia);%m(mes);w(dia_semana)
 	fecha=`zenity --calendar \
 		--title='Seleccione una fecha' \
 		--text='Haga click en una fecha para seleccionarla.' \
 		--date-format='%d;%m;%w' \
-		--day=01 --month=02 --year=2017`
+		--day=$hoy_dia --month=$hoy_mes --year=2017`
 
 	if [ $fecha ]
 		then

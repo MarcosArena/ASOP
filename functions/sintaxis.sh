@@ -1,3 +1,4 @@
+#Oscar Cobo Gomez
 function string(){
 	contador=0
 	contador1=1

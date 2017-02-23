@@ -1,3 +1,6 @@
+#AUTOR -> MARCOS ARENA
+
+
 #FALTA CHECKEAR SI EL USUARIO EXITE...
 
 function createRecordatorio() {
@@ -19,9 +22,10 @@ fi
 
 ruta_history_root="/recordatorios/historial"
 
-#Si el titulo tiene espacios, los susituimos por "_"
-tituloWithUnder=${titulo/ /_} 
-tituloLimpio=${titulo/;/_} 
+#Si el titulo tiene espacios o ";", los susituimos por "_"
+tituloLimpio=${titulo/ /_} 
+tituloLimpio=${titulo/;/_}
+
 
 echo "#!/bin/bash" > $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
 echo "#Titulo: $titulo\n \n" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh

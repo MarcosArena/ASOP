@@ -21,6 +21,14 @@ function checkTimeFormat()
         
                 #LLamamos a la funcion getTimeAndDate
                 timeAndDate="$minuto $hora $fecha_s"
+                
+                if [ "$2"=="-z" ]
+                    then 
+                    z_getRecordatorio
+                else
+                    :
+                fi
+                
                 echo $timeAndDate
                 #getTimeAndDate "$minuto" "$hora" "$fecha_s"
 	   else

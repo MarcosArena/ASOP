@@ -1,3 +1,5 @@
+#AUTOR -> MARCOS ARENA
+
 function z_getTime () {
     
     #Pedimos al usuario que introduzca una hora en formato HH:MM y lo almacenamos en la variable $time

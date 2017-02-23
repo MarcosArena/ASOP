@@ -4,7 +4,7 @@ function z_getRecordatorio() {
 	if [ "$titulo" ]
         
 		then 
-        $titulo="$titulo"
+        titulo="$titulo"
         descripcion=`zenity --entry --title="Descripción" --text="Añade información al recordatorio." \
 			--entry-text="Descripción..."`	
 			if [ $? = 0 ]

@@ -72,11 +72,11 @@ case $1 in
 		;;
 	-h)
 		echo ""
-		echo "tasks.sh"
 		echo "es una orden para gestionar los recordatorios del usuario"
 		echo "si se ejecuta sin ningun parametro se ejecutará con entrono grafico"
 		echo "los parametros para utilizar son los siguientes:"
 		echo -e "     -a: añadir"
+		echo -e "                dd/mm/yyyy hh:mm" "Titulo Recordatorio " " Descripcion Recordatorio""
 		;;
 	*)
 		echo "mal parametro"

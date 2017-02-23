@@ -25,7 +25,8 @@ function z_checkTimeFormat()
 			fi
            
             #Llamamos a la funcion getTimeAndDate
-            z_getTimeAndDate "$minuto" "$hora" "$fecha"
+            timeAndDate="$minuto $hora $fecha"
+            z_getRecordatorio
 	else
     
         #Si el formato es incorrecto, volvemos a llamar a getTime()

@@ -23,12 +23,13 @@ function z_checkTimeFormat()
 			else 
 				minuto=$minuto
 			fi
-            echo $minuto $hora $fecha
+           
             #Llamamos a la funcion getTimeAndDate
             z_getTimeAndDate "$minuto" "$hora" "$fecha"
 	else
     
         #Si el formato es incorrecto, volvemos a llamar a getTime()
+        clear
   		zenity --warning --text="El formato de la hora no es correcto, debe ser HH:MM"
 		z_getTime
 	fi	

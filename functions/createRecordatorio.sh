@@ -6,51 +6,60 @@ if [ "$USER" == "root" ]
     then
         #Si ha introducido un usuario como parametro -> ruta del home del usr
         if [ "$usuario" != "root" ]
-            then ruta_script="/home/$usuario/recordatorios"
+            then ruta_script="/home/$usuario/recordatorios/recordatorios"
+                 ruta_history_usuario="/home/$usuario/recordatorios/historial"
         else
-            #Si ha introducido un usuario como parametro -> el rec. se crea para root
-            ruta_script="/root/recordatorios"
+            #Si NO ha introducido un usuario como parametro -> el rec. se crea para root
+            ruta_script="/recordatorios/recordatorios"            
         fi
 else 
-    ruta_script="$HOME/recordatorios"
+    ruta_script="$HOME/recordatorios/recordatorios"
+    ruta_history_usuario="$HOME/recordatorios/historial"
 fi
+
+ruta_history_root="/recordatorios/historial"
 
 #Si el titulo tiene espacios, los susituimos por "_"
 tituloWithUnder=${titulo/ /_} 
+tituloLimpio=${titulo/;/_} 
 
 echo "#!/bin/bash" > $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
 echo "#Titulo: $titulo\n \n" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
 echo "#Descripcion: $descripcion \n" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
 
-echo "export DISPLAY=:0" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
-    
-echo "rec=\`zenity 	--info \
-	   --title=\"$titulo\" \
-	   --text=\"\n Titulo: $titulo \n \n Descripcion: $descripcion\"\
+ echo "rec=\`zenity 	--info \
+		--title=\"$titulo\" \
+		--text=\"\n Titulo: $titulo \n \n Descripcion: $descripcion\"\
         --width=500 \
         --height=300\`" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
-        
-echo "      case $? in
-                0)
-                    echo Comenzar instalación...;;
-                1)
-                    echo Has detenido la instalación...;;
-                2)
-                    echo Ha ocurrido un error inesperado...;;
-            esac "  >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
-    
-    if [ $?=0 ]
+echo " case \$? in
+	       0|1)
+		      rm -- "$ruta_script/"$tituloWithUnder"_"$VALID_ID".sh";;
+	
+	       2)
+		      echo Ha ocurrido un error inesperado...;;
+        esac    " >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
+            
+if [ $?=0 ]
         then
         
-        now=$(date +'%m/%d/%Y a las %H:%M')
+        #le damos permisos al script
+        chmod 777 $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
+        
+        now=`(date +'%d/%m/%Y %H:%S')`
+        
                     
-        echo "Se ha creado el script en : $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh"
-        #si ha ido bien
-        echo "[CREATED] ID del recordatorio: \"$VALID_ID\"  Titulo: \"$titulo\"   Creado por: \"$USER\"     Fecha: \"$now\"" >> $HOME/recordatorios/historial/history.txt
+        echo "Se ha creado el script: $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh"
+        
+        
+        echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$now" >> $ruta_history_root/history.txt
+        
+        echo "[CREATED] ID del recordatorio: \"$VALID_ID\"      Titulo: \"$titulo\"     Creado para: \"$usuario\"       Fecha: \"$now\"" >> $ruta_history_usuario/history.txt
+        
     else
         echo "Error al crear el script. Fíjate en el nombre de usuario $usuario"
+        exit
     fi
     
-    #addToCron $VALID_ID 
 }
 

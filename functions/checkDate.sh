@@ -14,8 +14,8 @@ function checkDate() {
     #echo $fecha
     
 	#Obtenemos el formato deseado para el string dia mes dia_semana
-	fecha_s=$( date -d $fecha +'%d %b %w')	
-      
+	fecha_s=$( date -d $fecha +'%d %m %w')	
+          
 	#Si la conversión ha funcionado...
 		case $? in
 			0)

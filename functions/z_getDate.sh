@@ -7,7 +7,7 @@ function z_getDate () {
 	fecha=`zenity --calendar \
 		--title='Seleccione una fecha' \
 		--text='Haga click en una fecha para seleccionarla.' \
-		--date-format='%d;%b;%w' \
+		--date-format='%d;%m;%w' \
 		--day=$hoy_dia --month=$hoy_mes --year=2017`
 
 	if [ $fecha ]
@@ -21,7 +21,8 @@ function z_getDate () {
         #Pedimos confirmación para cancelar.
 		zenity --question --title="Atención" --text="¿Seguro que deseas cancelar la operación?"	
 			if [ $? = 0 ]	
-				then exit
+				then clear 
+                exit
 			else
                 #Llamamos a la función getDate
 				z_getDate

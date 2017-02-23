@@ -11,7 +11,8 @@ function z_getTime () {
 		else
 			zenity --question --title="Atención" --text="¿Seguro que deseas cancelar la operación?"	
 			if [ $? = 0 ]	
-				then exit
+				then clear 
+                exit
 			else
 				z_getTime
 			fi

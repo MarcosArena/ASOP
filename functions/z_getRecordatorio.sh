@@ -15,14 +15,16 @@ function z_getRecordatorio() {
 			else
 				zenity --question --title="Atención" --text="¿Seguro que deseas cancelar la operación?"	
 			if [ $? = 0 ]	
-				then exit
+				then clear 
+                exit
 			else
 				z_getRecordatorio
 			fi
 			fi		
 	else zenity --question --title="Atención" --text="¿Seguro que deseas cancelar la operación?"	
 			if [ $? = 0 ]	
-				then exit
+				then clear 
+                exit
 			else
 				z_getRecordatorio
 			fi

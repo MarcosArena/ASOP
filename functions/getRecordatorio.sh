@@ -13,8 +13,8 @@ else
         recordatorio="$1 \"$2\" \"$3\""        
 fi
 
-#echo $recordatorio
 
 createRecordatorio "$titulo" "$descripcion"
+
 
 }

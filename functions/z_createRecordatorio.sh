@@ -1,23 +1,26 @@
 function z_createRecordatorio() {
-#str_fecha=$( date -d $fecha +'%d_%m_%Y')	
 
 if [ "$USER" == "root" ]
     then
         #Si ha introducido un usuario como parametro -> ruta del home del usr
         if [ "$usuario" != "root" ]
-            then ruta_script="/home/$usuario/recordatorios"
+            then ruta_script="/home/$usuario/recordatorios/recordatorios"
+                 ruta_history_usuario="/home/$usuario/recordatorios/historial"
         else
-            #Si ha introducido un usuario como parametro -> el rec. se crea para root
-            ruta_script="/root/recordatorios"
+            #Si NO ha introducido un usuario como parametro -> el rec. se crea para root
+            ruta_script="/recordatorios/recordatorios"            
         fi
 else 
-    ruta_script="$HOME/recordatorios"
+    ruta_script="$HOME/recordatorios/recordatorios"
+    ruta_history_usuario="$HOME/recordatorios/historial"
 fi
+
+ruta_history_root="/recordatorios/historial"
 
 #Si el titulo tiene espacios, los susituimos por "_"
 tituloWithUnder=${titulo/ /_} 
 
-echo $ruta_script
+#echo $ruta_script
 
     echo "#!/bin/bash" > $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
     echo "#Titulo: $titulo " >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
@@ -31,22 +34,34 @@ echo $ruta_script
 		--text=\"\n Titulo: $titulo \n \n Descripcion: $descripcion\"\
         --width=500 \
         --height=300\`" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
-    echo " case $? in
+    echo " case \$? in
 	0)
-		echo Comenzar instalación...;;
+		rm -- "$ruta_script/"$tituloWithUnder"_"$VALID_ID".sh";;
 	1)
-		echo Has detenido la instalación...;;
+		rm -- "$ruta_script/"$tituloWithUnder"_"$VALID_ID".sh";;
 	2)
 		echo Ha ocurrido un error inesperado...;;
 esac    " >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
     
     if [ $?=0 ]
         then 
-        now=$(date +'%m/%d/%Y a las %H:%M')
+        
+         #le damos permisos al script
+        chmod 777 $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
+        
+        
+        now=`(date +'%d/%m/%Y %H:%S')`
+        
         echo "Se ha creado el script: $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh"
-        echo "[ CREATED ] Fecha: \"$now\"     ID del recordatorio: \"$VALID_ID\"     Titulo: \"$titulo\"     Creado por: \"$USER\"" >> $HOME/recordatorios/historial/history.txt
+        
+         echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$now" >> $ruta_history_root/history.txt
+        
+        echo "[CREATED] ID del recordatorio: \"$VALID_ID\"      Titulo: \"$titulo\"     Creado para: \"$usuario\"       Fecha: \"$now\"" >> $ruta_history_usuario/history.txt
+        
+        
     else
         echo "Error al crear el script."
+        exit
     fi
     
 }

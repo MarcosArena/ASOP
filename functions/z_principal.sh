@@ -10,7 +10,6 @@
 . ./functions/z_getTime.sh
 . ./functions/addToCron.sh
 
-function visualZenity(){
 VALID_ID=$(getFilename)
 
 
@@ -47,4 +46,3 @@ addToCron
 #bash $ruta_script/"$VALID_ID".sh
 #getTimeAndDate 
 #getRecordatorio
-}

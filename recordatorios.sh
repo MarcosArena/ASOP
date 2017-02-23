@@ -68,7 +68,8 @@ case $1 in
 		;;
 	"")
 		#no se si funciona/hay que cambiarlo por el menu
-		bash ./functions/z_principal.sh
+		#bash ./functions/z_principal.sh
+		echo "entorno grafico zenity"
 		;;
 	-h)
 		echo ""

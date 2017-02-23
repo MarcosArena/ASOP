@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#AUTOR -> MARCOS ARENA
+
 if [ "$USER" == "root" ]
     then
         #Si ha introducido un usuario como parametro -> ruta del home del usr

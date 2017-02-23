@@ -2,7 +2,6 @@
 
 . ./functions/checkDate.sh
 . ./functions/checkTimeFormat.sh
-. ./functions/getTimeAndDate.sh
 . ./functions/generateID.sh
 . ./functions/checkExists.sh
 . ./functions/getFileName.sh

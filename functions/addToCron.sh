@@ -12,7 +12,7 @@ function addToCron(){
 	#valor3=`find ~/recordatorios/ -name "$VALID_ID".sh`
     
     #valor3='/home/marc/recordatorios/Examen_ASOP_Gv5gwQKY.sh'
-    echo $finalString
+    #echo $finalString
     
     #echo $timeAndDate
     #exit
@@ -20,9 +20,14 @@ function addToCron(){
     #cadena="$timeAndDate $valor2 $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh"
     #echo $cadena
     
+    # -> MARC <-
+    
+    
+    
 	#Comprobamos si el usuario es root.
 	if [ $USER = "root" ];
 	    then
+        
         #Añadimos los valores al archivo crontab del usuario root.
 	    echo $finalString >> /etc/crontab    
 	    echo "...done."
@@ -34,14 +39,16 @@ function addToCron(){
 	        #Si no tiene un archivo le creamos un archivo con el parametro -u
             echo "Creando archivo crontab para el usuario: $USER"
             echo "...done."
-		    crontab -u $USER ~/recordatorios/crontabsample.txt
+            echo $finalString >> ~/recordatorios/.cron.txt
+		    #crontab -u $USER ~/recordatorios/.crontabsample.txt
             #Introducimos los valores dentro del archivo.
             echo "Añadiendo la tarea."
             
-            crontab -l | { cat; echo "$finalString"; } | crontab -
+            #crontab -l | { cat; echo "$finalString"; } | crontab -
+            crontab ~/recordatorios/.cron.txt
             echo "...done."
 	        else
-            crontab -l | { cat; echo "$finalString"; } | crontab -
+            crontab ~/recordatorios/.cron.txt
             
 	        
 	    fi

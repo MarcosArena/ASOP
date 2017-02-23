@@ -1,3 +1,4 @@
+#AUTOR -> DIEGO
 
 # Funcion que genera una cadena alfanumerica de 8 caracteres
 function generateID {

@@ -1,3 +1,5 @@
+#AUTOR -> MARCOS ARENA
+
 # Funcion principal que genera un id unico con comprobacion
 function getFilename {
    while true; do

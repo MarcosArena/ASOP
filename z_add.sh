@@ -6,7 +6,7 @@
 . ./functions/checkExists.sh
 . ./functions/getFileName.sh
 . ./functions/z_getRecordatorio.sh
-. ./functions/z_createRecordatorio.sh
+. ./functions/createRecordatorio.sh
 . ./functions/z_getTime.sh
 . ./functions/addToCron.sh
 

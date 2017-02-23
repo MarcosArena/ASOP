@@ -10,6 +10,7 @@
 . ./functions/getFileName.sh
 . ./functions/getRecordatorio.sh
 . ./functions/createRecordatorio.sh
+. ./functions/z_principal.sh
 case $1 in
 	-a)
 		if [ "$USER" = "root" ] 
@@ -66,7 +67,7 @@ case $1 in
 		echo "consultas"
 		;;
 	"")
-		echo "principal zenity"
+		visualZenity
 		;;
 	-h)
 		echo ""

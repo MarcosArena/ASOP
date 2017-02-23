@@ -67,7 +67,8 @@ case $1 in
 		echo "consultas"
 		;;
 	"")
-		visualZenity
+		#no se si funciona/hay que cambiarlo por el menu
+		bash ./functions/z_principal.sh
 		;;
 	-h)
 		echo ""

@@ -6,14 +6,14 @@ if [ "$USER" == "root" ]
     then
         #Si ha introducido un usuario como parametro -> ruta del home del usr
         if [ "$usuario" != "root" ]
-            then ruta_script="/home/$usuario/recordatorios/recordatorios"
+            then ruta_script="/home/$usuario/scripts/recordatorios"
                  ruta_history_usuario="/home/$usuario/recordatorios/historial"
         else
             #Si NO ha introducido un usuario como parametro -> el rec. se crea para root
-            ruta_script="/recordatorios/recordatorios"            
+            ruta_script="/recordatorios/scripts"            
         fi
 else 
-    ruta_script="$HOME/recordatorios/recordatorios"
+    ruta_script="$HOME/recordatorios/scripts"
     ruta_history_usuario="$HOME/recordatorios/historial"
 fi
 
@@ -48,6 +48,7 @@ if [ $?=0 ]
         
         now=`(date +'%d/%m/%Y %H:%S')`
         
+        clear
                     
         echo "Se ha creado el script: $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh"
         

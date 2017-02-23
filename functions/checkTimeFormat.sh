@@ -20,7 +20,9 @@ function checkTimeFormat()
                 time="$minuto $hora"
         
                 #LLamamos a la funcion getTimeAndDate
-                getTimeAndDate "$minuto" "$hora" "$fecha_s"
+                timeAndDate="$minuto $hora $fecha_s"
+                echo $timeAndDate
+                #getTimeAndDate "$minuto" "$hora" "$fecha_s"
 	   else
             clear
   		    echo "El formato de la hora no es correcto, debe ser HH:MM"

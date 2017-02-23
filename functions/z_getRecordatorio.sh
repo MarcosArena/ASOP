@@ -30,5 +30,5 @@ function z_getRecordatorio() {
 			fi
 	fi  		
 
-z_createRecordatorio "$titulo" "$descripcion" "$usuario"
+createRecordatorio "$titulo" "$descripcion" "$usuario"
 }

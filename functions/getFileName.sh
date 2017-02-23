@@ -1,4 +1,4 @@
-#AUTOR -> MARCOS ARENA
+#AUTOR -> DIEGO ORTIZ
 
 # Funcion principal que genera un id unico con comprobacion
 function getFilename {

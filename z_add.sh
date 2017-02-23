@@ -1,6 +1,6 @@
 #!/bin/bash
 . ./functions/z_getDate.sh
-. ./functions/z_checkTimeFormat.sh
+. ./functions/checkTimeFormat.sh
 . ./functions/z_getTimeAndDate.sh
 . ./functions/generateID.sh
 . ./functions/checkExists.sh

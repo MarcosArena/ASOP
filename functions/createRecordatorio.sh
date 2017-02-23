@@ -1,6 +1,3 @@
-#AUTOR -> MARCOS ARENA
-
-
 #FALTA CHECKEAR SI EL USUARIO EXITE...
 
 function createRecordatorio() {
@@ -9,7 +6,7 @@ if [ "$USER" == "root" ]
     then
         #Si ha introducido un usuario como parametro -> ruta del home del usr
         if [ "$usuario" != "root" ]
-            then ruta_script="/home/$usuario/scripts/recordatorios"
+            then ruta_script="/home/$usuario/recordatorios/scripts"
                  ruta_history_usuario="/home/$usuario/recordatorios/historial"
         else
             #Si NO ha introducido un usuario como parametro -> el rec. se crea para root
@@ -22,12 +19,12 @@ fi
 
 ruta_history_root="/recordatorios/historial"
 
-#Si el titulo tiene espacios o ";", los susituimos por "_"
-tituloLimpio=${titulo/ /_} 
-tituloLimpio=${titulo/;/_}
-
+#Si el titulo tiene espacios, los susituimos por "_"
+tituloWithUnder=${titulo/ /-} 
+tituloLimpio=${titulo/;/-} 
 
 echo "#!/bin/bash" > $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
+echo "export DISPLAY=:0" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
 echo "#Titulo: $titulo\n \n" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
 echo "#Descripcion: $descripcion \n" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
 
@@ -37,7 +34,9 @@ echo "#Descripcion: $descripcion \n" >> $ruta_script/"$tituloWithUnder"_"$VALID_
         --width=500 \
         --height=300\`" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
 echo " case \$? in
-	       0|1)
+	       0) 
+            rm -- "$ruta_script/"$tituloWithUnder"_"$VALID_ID".sh";;
+           1)
 		      rm -- "$ruta_script/"$tituloWithUnder"_"$VALID_ID".sh";;
 	
 	       2)

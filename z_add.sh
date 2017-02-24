@@ -1,7 +1,6 @@
 #!/bin/bash
 . ./functions/z_getDate.sh
 . ./functions/checkTimeFormat.sh
-. ./functions/z_getTimeAndDate.sh
 . ./functions/generateID.sh
 . ./functions/checkExists.sh
 . ./functions/getFileName.sh
@@ -38,10 +37,7 @@ fi
 
 finalString="$timeAndDate $usuario bash $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh"
 
-#echo $finalString
-#echo $timeAndDate
-
-addToCron $finalString
+addToCron
 
 
 #bash $ruta_script/"$VALID_ID".sh

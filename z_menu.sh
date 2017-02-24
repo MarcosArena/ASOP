@@ -1,5 +1,6 @@
-#Ejemplo de radiolist - Zenity -> Marcos 
 #!/bin/bash
+
+#AUTOR -> MARCOS ARENA
 
 list=`zenity --list --radiolist --print-column='3' --separator=',' --title="Seleccione un opción" --text="Elija una opción para empezar."\
 	--width=400 --height=400 \

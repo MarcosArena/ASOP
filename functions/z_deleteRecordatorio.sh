@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #AUTOR -> MARCOS ARENA
-
+function z_deleteRecordatorio {
 if [ "$USER" == "root" ]
     then
         #Si ha introducido un usuario como parametro -> ruta del home del usr
@@ -19,29 +19,16 @@ archivo=`zenity --file-selection --filename=$ruta_script/ --title="Selecciona un
 
 case $? in 
 	0) 
-		echo $archivo;;	
+		echo $archivo
+        deleteRecordatorio $archivo;;	
 	1) 	
 		echo "No ha seleccionado ningún archivo.";;
 	2)
 		echo "Ha ocurrido un error inesperado.";;
 esac
 
-#Explode de $archivo (Delimitador _ )
-arrayArchivo=(${archivo//_/ })
+#añadir funcion delete recordatorio
 
-#Identificamos
-ID=${arrayArchivo[1]}
-echo $ID
-
-if [ $USER=="root" ]
-   then
-       sed -i /$archivo/d /etc/crontab > /etc/crontab
-       clear
-       
-       else 
-       sed -i /"$archivo"/d ~/recordatorios/.cron.txt > ~/recordatorios/.cron.txt
-       crontab ~/recordatorios/.cron.txt
-       clear
-fi
 
 rm -- $archivo
+}

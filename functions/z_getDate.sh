@@ -14,6 +14,7 @@ function z_getDate () {
 		then
 		#Cambiamos las ";" por un espacio. (Si no, --date-format del zenity da error). 
 		fecha_s=${fecha//;/ }
+        #checkDate $fecha -z
 		#fecha_s="${fecha}"
 		z_getTime
 			

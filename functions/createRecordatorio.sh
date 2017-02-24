@@ -5,13 +5,8 @@
 function createRecordatorio() {
 
 #Si el titulo tiene espacios, los susituimos por "_"
-tituloWithUnder=${titulo/ /-} 
-tituloLimpio=${titulo/;/-}
-
-#Asignamos la ruta completa del script a $script
-script=$ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
-
-
+tituloWithUnder=${titulo// /-} 
+tituloLimpio=${titulo//;/-}
 
 if [ "$USER" == "root" ]
     then
@@ -29,52 +24,52 @@ else
 fi
 
 ruta_history_root="/recordatorios/historial"
- 
 
-# -> PRINCIPIO SCRIPT <-
-echo "#!/bin/bash" > $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
-echo "export DISPLAY=:0" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
-echo "#Titulo: $titulo\n \n" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
-echo "#Descripcion: $descripcion \n" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
+#Asignamos la ruta completa del script a $script
+script=$ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
+
+# -> INICIO >> SCRIPT <-
+echo "#!/bin/bash" > $script
+echo "export DISPLAY=:0" >> $script
+echo "#Titulo: $titulo\n \n" >> $script
+echo "#Descripcion: $descripcion \n" >> $script
 
 echo "rec=\`zenity 	--info \
 		--title=\"$titulo\" \
 		--text=\"\n Titulo: $titulo \n \n Descripcion: $descripcion\"\
         --width=500 \
-        --height=300\`" >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
+        --height=300\`" >> $script
 echo " case \$? in
 
 	       0) 
-              rm -- "$ruta_script/"$tituloWithUnder"_"$VALID_ID".sh";;
+              rm -- "$script";;
            1)
-		      rm -- "$ruta_script/"$tituloWithUnder"_"$VALID_ID".sh";;
+		      rm -- "$script";;
 	
 	       2)
 		      echo Ha ocurrido un error inesperado...;;
-        esac    " >> $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
-# -> FINAL SCRIPT <-
+        esac    " >> $script
+
+#-> FINAL SCRIPT <-
 
 if [ $?=0 ]
         then
         
         #le damos permisos al script
-        chmod 777 $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
-        
-        now=`(date +'%d/%m/%Y %H:%S')`
-        
+        chmod 777 $script
+        #Calculamos la fecha actual
+        now=`(date +'%d/%m/%Y %H:%S')`        
         clear
                     
-        echo "Se ha creado el script: $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh"
+        echo "Se ha creado el script: $script"
         
-        
-        echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$now" >> $ruta_history_root/history.txt
-        
-        echo "[CREATED] ID del recordatorio: \"$VALID_ID\"      Titulo: \"$titulo\"     Creado para: \"$usuario\"       Fecha: \"$now\"" >> $ruta_history_usuario/history.txt
+        # HISTORIAL
+        echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$now" >> $ruta_history_root/history.txt        
+        echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$now" >> $ruta_history_usuario/history.txt
         
     else
-        echo "Error al crear el script. Fíjate en el nombre de usuario $usuario"
+        echo "Error al crear el script."
         exit
-    fi
-    
+    fi    
 }
 

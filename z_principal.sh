@@ -1,11 +1,12 @@
 #!/bin/bash
 . ./functions/z_getDate.sh
-. ./functions/checkTimeFormat.sh
+. ./functions/z_checkTimeFormat.sh
+. ./functions/z_getTimeAndDate.sh
 . ./functions/generateID.sh
 . ./functions/checkExists.sh
 . ./functions/getFileName.sh
 . ./functions/z_getRecordatorio.sh
-. ./functions/createRecordatorio.sh
+. ./functions/z_createRecordatorio.sh
 . ./functions/z_getTime.sh
 . ./functions/addToCron.sh
 . ./functions/deleteRecordatorio.sh
@@ -37,6 +38,9 @@ else
 fi
 
 finalString="$timeAndDate $usuario bash $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh"
+
+#echo $finalString
+#echo $timeAndDate
 
 addToCron
 

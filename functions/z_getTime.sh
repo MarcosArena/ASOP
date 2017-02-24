@@ -1,5 +1,3 @@
-#AUTOR -> MARCOS ARENA
-
 function z_getTime () {
     
     #Pedimos al usuario que introduzca una hora en formato HH:MM y lo almacenamos en la variable $time
@@ -9,7 +7,7 @@ function z_getTime () {
         #Comprobamos si se ha introducido.
 		if [ $time ]
             #Llamamos a la función checkTimeFormat para compbrobar que el formato es HH:MM
-			then z_checkTimeFormat $time
+			then checkTimeFormat $time -z
 		else
 			zenity --question --title="Atención" --text="¿Seguro que deseas cancelar la operación?"	
 			if [ $? = 0 ]	
@@ -20,4 +18,4 @@ function z_getTime () {
 			fi
 		fi
 return
-} 
+}

@@ -1,7 +1,7 @@
+
 #AUTOR -> MARCOS ARENA
 
-#Funcion que da valor a las variables $titulo $descripcion $user -> introduce estos valores
-
+#Funcion que da valor a las variables $titulo $descripcion $usuario
 
 function getRecordatorio() {
 
@@ -10,15 +10,11 @@ if [ $USER == root ]
     titulo=$2
     descripcion=$3
     usuario=$4
-    recordatorio="$1 \"$2\" \"$3\" $4"    
 else
-        titulo=$2
-        descripcion=$3
-        recordatorio="$1 \"$2\" \"$3\""        
+    titulo=$2
+    descripcion=$3         
 fi
 
-
 createRecordatorio "$titulo" "$descripcion"
-
 
 }

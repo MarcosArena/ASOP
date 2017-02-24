@@ -1,4 +1,4 @@
-#AUTOR -> MARCOS ARENA
+# AUTOR -> MARCOS ARENA
 
 function checkTimeFormat()
 {
@@ -24,8 +24,9 @@ function checkTimeFormat()
                 #LLamamos a la funcion getTimeAndDate
                 timeAndDate="$minuto $hora $fecha_s"
                 
-                if [ "$2"=="-z" ]
+                if [ $2 ]
                     then 
+                    timeAndDate="$minuto $hora $fecha_s"
                     z_getRecordatorio
                 else
                     :
@@ -34,8 +35,15 @@ function checkTimeFormat()
                 echo $timeAndDate
                 #getTimeAndDate "$minuto" "$hora" "$fecha_s"
 	   else
+       
+        if [ $2 ]
+        then
+            clear
+  		    zenity --warning --text="El formato de la hora no es correcto, debe ser HH:MM"
+        else
             clear
   		    echo "El formato de la hora no es correcto, debe ser HH:MM"
-            exit		
+            exit	
+        fi            	
 	   fi	    
 }

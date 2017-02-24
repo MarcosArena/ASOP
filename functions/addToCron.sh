@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#AUTOR: Germán
+
 #idimpostor="$tituloWithUnder"_"$VALID_ID"
 #Valor de la fecha recibido por la funcion de Marc.
 #valor='50 10 5 5 5'
@@ -20,7 +22,6 @@ function addToCron(){
     #cadena="$timeAndDate $valor2 $ruta_script/"$tituloWithUnder"_"$VALID_ID".sh"
     #echo $cadena
     
-    # -> MARC <-
     
     
     

@@ -1,5 +1,3 @@
-#AUTOR -> MARCOS ARENA
-
 function z_getDate () {
 
     hoy_dia=$(date +'%d')
@@ -15,8 +13,8 @@ function z_getDate () {
 	if [ $fecha ]
 		then
 		#Cambiamos las ";" por un espacio. (Si no, --date-format del zenity da error). 
-		fecha=${fecha//;/ }
-		fecha="${fecha}"
+		fecha_s=${fecha//;/ }
+		#fecha_s="${fecha}"
 		z_getTime
 			
 	else

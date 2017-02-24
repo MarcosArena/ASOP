@@ -25,3 +25,23 @@ case $? in
 	2)
 		echo "Ha ocurrido un error inesperado.";;
 esac
+
+#Explode de $archivo (Delimitador _ )
+arrayArchivo=(${archivo//_/ })
+
+#Identificamos
+ID=${arrayArchivo[1]}
+echo $ID
+
+if [ $USER=="root" ]
+   then
+       sed -i /$archivo/d /etc/crontab > /etc/crontab
+       clear
+       
+       else 
+       sed -i /"$archivo"/d ~/recordatorios/.cron.txt > ~/recordatorios/.cron.txt
+       crontab ~/recordatorios/.cron.txt
+       clear
+fi
+
+rm -- $archivo

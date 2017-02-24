@@ -1,4 +1,9 @@
 
+#AUTOR -> MARCOS ARENA
+
+# Funcion al que le pasamos la fecha introducida, comprueba que es una fecha valida, y devuelve la fecha
+# con el formato deseado dia mes dia_semana
+
 function checkDate() {
  clear	
 	 

@@ -1,0 +1,4 @@
+para que funcione se han de crear las carpetas ~/recordatorios/historial y ~/recordatorios/scripts
+en los homes de los usuarios.
+
+Tambien se ha de crear como root en la raiz la estructttura ~/recordatorios/historial ~/recordatorios/scripts y ¿ponerle permismos 777?

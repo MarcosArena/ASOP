@@ -13,6 +13,8 @@ if [ "$USER" == "root" ]
 		echo "...eliminando tarea programada."
 		echo "...done."
 		echo "root"
+		echo "[DELETED];$1;$tituloLimpio;$USER;$usuario;$now" >> /recordatorios/history.txt        
+        	echo "[DELETED];$1;$tituloLimpio;$USER;$usuario;$now" >> ~/recordatorios/history.txt
 	else
 		echo "Error de formato, no ha introducido ninguna tarea para eliminar la tarea no existe."
 		echo "user"
@@ -26,6 +28,8 @@ else
 		rm $archive
 		echo "...eliminando tarea programada."
 		echo "...done."
+		echo "[DELETED];$1;$tituloLimpio;$USER;$usuario;$now" >> /recordatorios/history.txt        
+        	echo "[DELETED];$1;$tituloLimpio;$USER;$usuario;$now" >> ~/recordatorios/history.tx
 	else
 		echo "Error de formato, no ha introducido ninguna tarea para eliminar o la tarea no existe."
 	fi

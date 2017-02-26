@@ -1,17 +1,8 @@
 #!/bin/bash
 #Oscar Cobo Gomez
-. ./functions/sintaxis.sh
 . ./functions/addToCron.sh
-. ./functions/users.sh
-. ./functions/checkDate.sh
-. ./functions/checkTimeFormat.sh
-. ./functions/generateID.sh
-. ./functions/checkExists.sh
-. ./functions/getFileName.sh
 . ./functions/getRecordatorio.sh
 . ./functions/createRecordatorio.sh
-. ./functions/deleteRecordatorio.sh
-. ./functions/z_menu.sh
 function getUsers(){
 	string=$3
 	totalidad=`expr length $string` #Guarda en una variable la longitud de la cadena introducida

@@ -58,14 +58,15 @@ if [ $?=0 ]
         #le damos permisos al script
         chmod 777 $script
         #Calculamos la fecha actual
-        now=`(date +'%d/%m/%Y %H:%S')`        
+        fecha=`(date +"%d-%m-%Y")`
+	hora=`(date +"%H:%M")`
         clear
                     
         echo "Se ha creado el script: $script"
         
         # HISTORIAL
-        echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$now" >> $ruta_history_root/history.txt        
-        echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$now" >> $ruta_history_usuario/history.txt
+        echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$fecha $hora" >> $ruta_history_root/history.txt        
+        echo "[CREATED] Fecha: \"$fecha a las "hora\" ID del recordatorio: \"$VALID_ID\"	Titulo: \"$tituloLimpio\"	Creado por: \"$USER\"	Para el usuario:\"$usuario\"" >> $ruta_history_usuario/history.txt
         
     else
         echo "Error al crear el script."

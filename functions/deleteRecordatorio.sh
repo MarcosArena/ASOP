@@ -15,8 +15,8 @@ if [ "$USER" == "root" ]
 		echo "...eliminando tarea programada."
 		echo "...done."
 		echo "root"
-		echo "[DELETED];$1;$tituloLimpio;$USER;$usuario;$fecha $hora" >> /recordatorios/historial/history.txt        
-        	echo "[DELETED] Fecha: \"$fecha a las $hora\"	ID del recordatorio: \"$1\"" >> ~/recordatorios/historial/history.txt
+		echo "[DELETED];$1;$tituloLimpio;$USER;$usuario;$fecha;$hora" >> /recordatorios/historial/history.txt        
+        	echo "[DELETED] ID del recordatorio: \"$1\"   Fecha: \"$fecha a las $hora\"" >> ~/recordatorios/historial/history.txt
 	else
 		echo "Error de formato, no ha introducido ninguna tarea para eliminar la tarea no existe."
 		echo "user"
@@ -31,8 +31,8 @@ else
 		echo "...eliminando tarea programada."
 		echo "...done."
 		#Añadimos linea a los history (cambiar formato?)
-		echo "[DELETED];$1;$tituloLimpio;$USER;$usuario;$fecha $hora" >> /recordatorios/historial/history.txt
-		echo "[DELETED] Fecha: \"$fecha a las $hora\"	ID del recordatorio: \"$1\"" >> ~/recordatorios/historial/history.txt
+		echo "[DELETED];$1;$tituloLimpio;$USER;$usuario;$fecha;$hora" >> /recordatorios/historial/history.txt
+		echo "[DELETED] ID del recordatorio: \"$1\"   Fecha: \"$fecha a las $hora\"" >> ~/recordatorios/historial/history.txt
 		
         	
 	else

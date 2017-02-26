@@ -8,13 +8,21 @@ if [ "$USER" = "root" ];
         if [ ! -f "~/recordatorios/" ]; 
 	        then
             mkdir "~/recordatorios/"
+	    mkdir "~/recordatorios/historial"
+	    mkdir "~/recordatorios/scripts"
             echo "...done."
         fi
+	    mkdir "/recordatorios"
+	    mkdir "/recordatorios/historial"
+	    mkdir "/recordatorios/scripts"
+	    chmod 777 /recordatorios/
 #Lo mismo pero con un usuario normal.
 else
         if [ ! -f "~/recordatorios/" ]; 
 	        then
             mkdir "~/recordatorios/"
+	    mkdir "~/recordatorios/historial"
+	    mkdir "~/recordatorios/scripts"
             echo "...done."    
         fi
 fi

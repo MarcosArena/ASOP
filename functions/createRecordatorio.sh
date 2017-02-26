@@ -65,8 +65,8 @@ if [ $?=0 ]
         echo "Se ha creado el script: $script"
         
         # HISTORIAL
-        echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$fecha $hora" >> $ruta_history_root/history.txt        
-        echo "[CREATED] Fecha: \"$fecha a las \"$hora\" ID del recordatorio: \"$VALID_ID\"	Titulo: \"$tituloLimpio\"	Creado por: \"$USER\"	Para el usuario:\"$usuario\"" >> $ruta_history_usuario/history.txt
+        echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$fecha;$hora" >> $ruta_history_root/history.txt        
+        echo "[CREATED] Titulo: \"$tituloLimpio\"   Fecha: \"$fecha a las \"$hora\"   ID del recordatorio: \"$VALID_ID\"   Creado por: \"$USER\" >> $ruta_history_usuario/history.txt
         
     else
         echo "Error al crear el script."

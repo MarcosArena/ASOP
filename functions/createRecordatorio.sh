@@ -40,7 +40,6 @@ echo "rec=\`zenity 	--info \
         --width=500 \
         --height=300\`" >> $script
 echo " case \$? in
-
 	       0) 
               rm -- "$script";;
            1)
@@ -58,19 +57,17 @@ if [ $?=0 ]
         #le damos permisos al script
         chmod 777 $script
         #Calculamos la fecha actual
-        fecha=`(date +"%d-%m-%Y")`
-	hora=`(date +"%H:%M")`
+        now=`(date +'%d/%m/%Y %H:%S')`        
         clear
                     
         echo "Se ha creado el script: $script"
         
         # HISTORIAL
-        echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$fecha;$hora" >> $ruta_history_root/history.txt        
-        echo "[CREATED] Titulo: \"$tituloLimpio\"   Fecha: \"$fecha a las $hora\"   ID del recordatorio: \"$VALID_ID\"   Creado por: \"$USER\" ">> $ruta_history_usuario/history.txt
+        echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$now" >> $ruta_history_root/history.txt        
+        echo "[CREATED];$VALID_ID;$tituloLimpio;$USER;$usuario;$now" >> $ruta_history_usuario/history.txt
         
     else
         echo "Error al crear el script."
         exit
     fi    
 }
-

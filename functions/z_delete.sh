@@ -1,8 +1,8 @@
 #!/bin/bash
-
-#AUTOR -> MARCOS ARENA
 . ./functions/deleteRecordatorio.sh
+#AUTOR -> MARCOS ARENA
 function z_delete(){
+
 if [ "$USER" == "root" ]
     then
         #Si ha introducido un usuario como parametro -> ruta del home del usr
@@ -21,7 +21,7 @@ archivo=`zenity --file-selection --filename=$ruta_script/ --title="Selecciona un
 case $? in 
 	0) 
 		echo $archivo
-        deleteRecordatorio $archivo;;	
+        delete $archivo;;	
 	1) 	
 		echo "No ha seleccionado ningún archivo.";;
 	2)

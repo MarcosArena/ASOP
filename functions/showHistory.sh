@@ -30,10 +30,10 @@ function showHistory {
 	for r in $eventos
 	do
 		fecha="$(echo $r | cut -d";" -f 6,7)"
-		titulo=$(echo $eventos | cut -d ";" -f 3)
-		accion=$(echo $eventos | cut -d";" -f 1)
-		de=$(echo $eventos | cut -d";" -f 4)
-		para=$(echo $eventos | cut -d";" -f 5)
+		titulo=$(echo $r | cut -d ";" -f 3)
+		accion=$(echo $r | cut -d";" -f 1)
+		de=$(echo $r | cut -d";" -f 4)
+		para=$(echo $r | cut -d";" -f 5)
 
 		if [ -z $para ]; then
 			para=$usuario

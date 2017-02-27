@@ -12,6 +12,8 @@
 . ./functions/createRecordatorio.sh
 . ./functions/deleteRecordatorio.sh
 . ./functions/z_menu.sh
+. ./functions/listAll.sh
+. ./functions/showHistory.sh
 case $1 in
 	-a)
 		if [ "$USER" = "root" ] #Si el usuario es Root entrará en el bucle
@@ -53,7 +55,6 @@ case $1 in
 	-d)
 		if [ $# -eq 2 ]
 			then
-				echo "listar recordatorios del usuario"
 				delete $2
 		else
 			echo "La sintaxis introducida no es correcta, pruebe a ejecutar recordatorios -h"
@@ -65,10 +66,72 @@ case $1 in
 		string "$6"
 		;;
 	-i)
-		echo "historico"
+		if [ $# -gt 1 ]; then
+			echo "La sintaxis introducida no es correcta, pruebe a ejecutar recordatorios -h"
+			exit 
+		fi
+
+		if [ $UID == '0' ]; then
+			if [ -z $2 ]; then
+				echo "Como root debes especificar una cuenta de usuario"
+				echo "Uso: ./showHistory.sh <usuario>"
+				exit
+			else 
+				if [ $2 != "-h" ]; then
+					showHistory $2
+				else 
+					echo "Uso: ./showHistory.sh <usuario>"
+					exit
+				fi
+			fi
+		else
+			if [[ -n $2 ]] && [[ $1 != $USER ]] && [[ $2 != "-h" ]]; then
+				echo "No puedes ver el historial de otros usuarios"
+				exit 
+			else 
+				if [[ -z $2 ]] && [[ $1 != "-h" ]]; then
+					showHistory
+				else 	
+					echo "Uso: ./showHistory.sh"
+					exit
+				fi
+			fi
+		fi
 		;;
 	-l)
-		echo "listar"
+		if [ "$USER" = "root" ]
+			then
+				if [ $# -eq 2 ]
+					then
+						archivos=$(grepfiles "/home/$2")
+						if [[ $archivos =~ \* ]]
+							then
+								echo "no se han encontrado recordatorios"
+								exit
+						else
+							printtable "$archivos"
+						fi
+				else
+					echo "Debes introducir un nombre de usuario"
+					exit
+				fi
+		else
+			if [[ $# -eq 2 ]] && [[ "$2" != "$USER" ]] 
+				then
+					echo "No puedes ver los recordatorios de otros usuarios"
+					exit
+			fi
+
+			archivos=$(grepfiles ~)
+
+			if [[ $archivos =~ \* ]]
+				then
+					echo "No se han encontrado recordatorios"
+					exit
+			else 
+				printtable "$archivos"
+			fi
+		fi
 		;;
 	-c)
 		echo "consultas"
@@ -88,10 +151,10 @@ case $1 in
 		echo -e "                ID"
 		echo -e "     -m: Modifica un recordatorio existente."
 		echo -e "                sintaxis para modificar"
-		echo -e "     -i: Muestra un historico de los recordatorios del usuario"
+		echo -e "     -i: Muestra el historico de los recordatorios del usuario"
 		echo -e "                [usuario]"
-		echo -e "     -l: listar"
-		echo -e "                sintaxis"
+		echo -e "     -l: Lista los recordatorios pendientes"
+		echo -e "                [usuario]"
 		echo -e "     -c: consultar"
 		echo -e "                sintaxis"
 		;;

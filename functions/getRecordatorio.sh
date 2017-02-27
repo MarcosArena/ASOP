@@ -4,7 +4,7 @@
 #Funcion que da valor a las variables $titulo $descripcion $usuario
 
 function getRecordatorio() {
-
+. ./functions/createRecordatorio.sh
 if [ $USER == root ]
     then
     titulo=$2

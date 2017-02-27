@@ -1,8 +1,11 @@
 #!/bin/bash
 #Oscar Cobo Gomez
+
 . ./functions/addToCron.sh
+
 . ./functions/getRecordatorio.sh
 . ./functions/createRecordatorio.sh
+
 function getUsers(){
 	string=$3
 	totalidad=`expr length $string` #Guarda en una variable la longitud de la cadena introducida

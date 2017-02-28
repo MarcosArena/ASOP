@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Autor: German
 if [ "$USER" = "root" ];
 	    then
         #Creamos un usuario que nos permita añadirlo al cron.deny y asi poder modificar el cron.

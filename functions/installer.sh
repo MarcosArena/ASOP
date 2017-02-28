@@ -10,15 +10,16 @@ if [ "$USER" = "root" ];
         echo recordatorios >> /etc/cron.deny
 
         #Añadimos el script de inicio que comprobara si esta creada la estructura, si no lo esta la creara.
-        #mv /recordatorios/functions/checkStructure.sh /etc/init.d/
+        #mv functions/checkStructure.sh /etc/init.d/
         chmod +x /etc/init.d/checkStructure.sh
         sudo update-rc.d checkStructure.sh defaults
 	
 	#Creamos la estructura necesaria en la raiz del sistema
-	 mkdir "/recordatorios"
+	 mkdir /recordatorios
 	 chmod 777 /recordatorios/
-	 mkdir "/recordatorios/historial"
-	 mkdir "/recordatorios/scripts"
+	 mkdir /recordatorios/historial
+	 chmod 777 /recordatorios/historial
+	 mkdir /recordatorios/scripts
 
 else
 echo "Se necesitan privilegios de administrador para realizar la instalación de esta herramienta"

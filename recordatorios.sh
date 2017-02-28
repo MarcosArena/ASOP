@@ -60,33 +60,25 @@ case $1 in
 		;;
 
 	-i)
-		if [ $# -gt 1 ]; then
-			echo "La sintaxis introducida no es correcta, pruebe a ejecutar recordatorios -h"
-			exit 
-		fi
+
 
 		if [ $UID == '0' ]; then
 			if [ -z $2 ]; then
 				echo "Como root debes especificar una cuenta de usuario"
-				echo "Uso: ./showHistory.sh <usuario>"
 				exit
 			else 
-				if [ $2 != "-h" ]; then
-					showHistory $2
-				else 
-					echo "Uso: ./showHistory.sh <usuario>"
-					exit
-				fi
+				showHistory $2
+
 			fi
 		else
-			if [[ -n $2 ]] && [[ $1 != $USER ]] && [[ $2 != "-h" ]]; then
+			if [[ -n $2 ]] && [[ $1 != $USER ]] && [[ $1 != "-i" ]]; then
 				echo "No puedes ver el historial de otros usuarios"
 				exit 
 			else 
-				if [[ -z $2 ]] && [[ $1 != "-h" ]]; then
+				if [ -z $2 ]; then
 					showHistory
 				else 	
-					echo "Uso: ./showHistory.sh"
+					echo "No puedes introducir un usuario si no eres root"
 					exit
 				fi
 			fi

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #Script de inicio para crear la estructura si no esta creada.
 #Para añadir el script de inicio hay que mover el archivo a /etc/.init.d y hacer un update-rc.d script.sh defaults
 
@@ -13,9 +13,10 @@ if [ "$USER" = "root" ];
             echo "...done."
         fi
 	    mkdir "/recordatorios"
+	    chmod 777 /recordatorios/
 	    mkdir "/recordatorios/historial"
 	    mkdir "/recordatorios/scripts"
-	    chmod 777 /recordatorios/
+
 #Lo mismo pero con un usuario normal.
 else
         if [ ! -f "~/recordatorios/" ]; 

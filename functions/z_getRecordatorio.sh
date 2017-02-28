@@ -1,3 +1,4 @@
+#AUTOR -> MARCOS ARENA
 function z_getRecordatorio() {
 	titulo=`zenity --entry --title="Título" --text="Título del recordatorio" \
 		--entry-text=""`

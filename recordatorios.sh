@@ -5,8 +5,6 @@
 . ./functions/users.sh
 . ./functions/checkDate.sh
 . ./functions/checkTimeFormat.sh
-. ./functions/generateID.sh
-. ./functions/checkExists.sh
 . ./functions/getFileName.sh
 . ./functions/getRecordatorio.sh
 . ./functions/createRecordatorio.sh

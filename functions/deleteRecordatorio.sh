@@ -1,4 +1,5 @@
 #!/bin/bash
+#Autor: German
 #Comprobamos si es root, si es root eliminamos la linea del archivo contrab del root, si no lo es, eliminamos la linea del archivo de respaldo .cron.txt del usuario y ejecutamos crontab para actualizar el fichero.
 function delete(){
 fecha=`(date +'%d/%m/%Y %H:%S')` 

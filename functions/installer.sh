@@ -18,6 +18,7 @@ if [ "$USER" = "root" ];
 	 mkdir "/recordatorios"
 	 chmod 777 /recordatorios/
 	 mkdir "/recordatorios/historial"
+	 chmod 777 /recordatorios/historial
 	 mkdir "/recordatorios/scripts"
 
 else

@@ -9,9 +9,6 @@ if [ "$USER" = "root" ];
         touch /etc/cron.deny
         echo recordatorios >> /etc/cron.deny
 
-        #Añadimos el script de inicio que comprobara si esta creada la estructura, si no lo esta la creara.
-
-	
 	#Creamos la estructura necesaria en la raiz del sistema
 	 mkdir /recordatorios
 	 chmod 777 /recordatorios/

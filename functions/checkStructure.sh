@@ -5,10 +5,10 @@
 case "$1" in
 
 start)
-	if [ ! -d "~/recordatorios" ]; then
-		mkdir "~/recordatorios"
-		mkdir "~/recordatorios/historial"
-		mkdir "~/recordatorios/scripts"
+	if [ ! -d ~/recordatorios ]; then
+		mkdir ~/recordatorios
+		mkdir ~/recordatorios/historial
+		mkdir ~/recordatorios/scripts
 	fi
 	;;
 *)

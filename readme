@@ -1,13 +1,1 @@
-para que funcione se han de crear las carpetas ~/recordatorios/historial y ~/recordatorios/scripts
-en los homes de los usuarios.
-
-Tambien se ha de crear como root en la raiz la estructttura ~/recordatorios/historial ~/recordatorios/scripts y ponerle permisos 777 a la carpeta
-
-En algunas versiones hace faltta hacer:
- useradd recordatorios
-
-        #Creamos el archivo cron.deny y añadimos al usuario creado anteriormente.
-        touch /etc/cron.deny
-echo recordatorios >> /etc/cron.deny
-
-para poder ejecutar los recordatorios que asigna el root
+Para poder utilizar la herramienta correctamente primero se ha de ejecutar installer.sh como usuario root

@@ -12,6 +12,12 @@
 . ./functions/z_menu.sh
 . ./functions/listAll.sh
 . ./functions/showHistory.sh
+
+if [ ! -d ~/recordatorios ]; then
+		mkdir ~/recordatorios
+		mkdir ~/recordatorios/historial
+		mkdir ~/recordatorios/scripts
+fi
 case $1 in
 	-a)
 		if [ "$USER" = "root" ] #Si el usuario es Root entrará en el bucle

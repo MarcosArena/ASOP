@@ -1,9 +1,4 @@
 #/bin/bash
-
-
-
-
-
 #
 # Grepfiles: busca los recordatorios almacenados en la ruta especificada
 # 
@@ -12,16 +7,10 @@
 #
 # Autor: Diego
 #
-
 function grepfiles {
 	ruta="$1/recordatorios/scripts/*.sh"
 	echo $ruta
 }
-
-
-
-
-
 
 
 #
@@ -53,24 +42,16 @@ function printtable {
 	echo " "
 }
 
-
-
-
 ###Todo esto está comentado porque se introduzco en el parámetro -l de recordatorios.sh
 
 #if [ $UID == '0' ] 
 #then
-
-
-
 #	if [ -z $1 ]
 #	then
 #		echo "Debes introducir un nombre de usuario"
 #		exit
 #	fi
-	
-#	archivos=$(grepfiles "/home/$1")
-	
+#	archivos=$(grepfiles "/home/$1")	
 #	if [[ $archivos =~ \* ]]
 #	then
 #		echo "No se han encontrado recordatorios"
@@ -78,18 +59,13 @@ function printtable {
 #	else 
 #		printtable "$archivos"
 #	fi
-
 #else
-
-
 #	if [[ -n $* ]] && [[ $* -ne "$USER" ]]
 #	then
 #		echo "No puedes ver los recordatorios de otros usuarios"
 #		exit
 #	fi
-
 #	archivos=$(grepfiles ~)
-
 #	if [[ $archivos =~ \* ]]
 #	then
 #		echo "No se han encontrado recordatorios"
@@ -97,6 +73,4 @@ function printtable {
 #	else 
 #		printtable "$archivos"
 #	fi
-
-
 #fi

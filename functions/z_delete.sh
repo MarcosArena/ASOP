@@ -20,16 +20,11 @@ archivo=`zenity --file-selection --filename=$ruta_script/ --title="Selecciona un
 
 case $? in 
 	0) 
-		echo $archivo
-        delete $archivo;;	
+		rm -- $archivo;;	
 	1) 	
 		echo "No ha seleccionado ningún archivo.";;
 	2)
 		echo "Ha ocurrido un error inesperado.";;
 esac
 
-#añadir funcion delete recordatorio
-
-
-rm -- $archivo
 }

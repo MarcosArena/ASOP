@@ -20,6 +20,7 @@ archivo=`zenity --file-selection --filename=$ruta_script/ --title="Selecciona un
 
 case $? in 
 	0) 
+		#delete $archivo
 		rm -- $archivo;;	
 	1) 	
 		echo "No ha seleccionado ningún archivo.";;

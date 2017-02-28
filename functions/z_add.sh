@@ -1,4 +1,6 @@
 #!/bin/bash
+
+#AUTOR -> MARCOS ARENA
 . ./functions/z_getDate.sh
 . ./functions/checkTimeFormat.sh
 . ./functions/generateID.sh

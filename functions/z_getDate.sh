@@ -1,3 +1,4 @@
+#AUTOR -> MARCOS ARENA
 function z_getDate () {
 
     hoy_dia=$(date +'%d')

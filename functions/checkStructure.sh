@@ -12,10 +12,7 @@ if [ "$USER" = "root" ];
 	    mkdir "~/recordatorios/scripts"
             echo "...done."
         fi
-	    mkdir "/recordatorios"
-	    chmod 777 /recordatorios/
-	    mkdir "/recordatorios/historial"
-	    mkdir "/recordatorios/scripts"
+
 
 #Lo mismo pero con un usuario normal.
 else

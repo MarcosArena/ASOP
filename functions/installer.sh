@@ -13,6 +13,12 @@ if [ "$USER" = "root" ];
         mv /recordatorios/functions/checkStructure.sh /etc/init.d/
         chmod +x /etc/init.d/checkStructure.sh
         sudo update-rc.d checkStructure.sh defaults
+	
+	#Creamos la estructura necesaria en la raiz del sistema
+	 mkdir "/recordatorios"
+	 chmod 777 /recordatorios/
+	 mkdir "/recordatorios/historial"
+	 mkdir "/recordatorios/scripts"
 
 else
 echo "Se necesitan privilegios de administrador para realizar la instalación de esta herramienta"

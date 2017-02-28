@@ -13,7 +13,8 @@
 . ./functions/listAll.sh
 . ./functions/showHistory.sh
 
-if [ ! -d ~/recordatorios ]; then
+if [ ! -d ~/recordatorios ]; then #comprobamos si existe ~/recordatorios
+		#Si no existe entrará en el if y creará los archivos necesarios
 		mkdir ~/recordatorios
 		mkdir ~/recordatorios/historial
 		mkdir ~/recordatorios/scripts

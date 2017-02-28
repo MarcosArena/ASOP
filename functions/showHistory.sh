@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Autor: Diego
 function showHistory {
 	clear
 

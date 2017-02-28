@@ -58,11 +58,7 @@ case $1 in
 			echo "La sintaxis introducida no es correcta, pruebe a ejecutar recordatorios -h"
 		fi
 		;;
-	-m)
-		echo "modificar"
-		string "$5"
-		string "$6"
-		;;
+
 	-i)
 		if [ $# -gt 1 ]; then
 			echo "La sintaxis introducida no es correcta, pruebe a ejecutar recordatorios -h"
@@ -147,8 +143,6 @@ case $1 in
 		echo -e "                dd/mm/yyyy hh:mm \"Titulo Recordatorio\" \"Descripcion Recordatorio\""
 		echo -e "     -d: Elimina el recordatorio que contiene la ID introducida."
 		echo -e "                ID"
-		echo -e "     -m: Modifica un recordatorio existente."
-		echo -e "                sintaxis para modificar"
 		echo -e "     -i: Muestra el historico de los recordatorios del usuario"
 		echo -e "                [usuario]"
 		echo -e "     -l: Lista los recordatorios pendientes"

@@ -5,29 +5,12 @@
 case "$1" in
 
 start)
-if [ "$USER" = "root" ];
-	    then
-        if [ ! -f "~/recordatorios/" ]; 
-	        then
-            mkdir "~/recordatorios/"
-	    mkdir "~/recordatorios/historial"
-	    mkdir "~/recordatorios/scripts"
-            echo "...done."
-        fi
-
-
-#Lo mismo pero con un usuario normal.
-else
-        if [ ! -f "~/recordatorios/" ]; 
-	        then
-            mkdir "~/recordatorios/"
-	    mkdir "~/recordatorios/historial"
-	    mkdir "~/recordatorios/scripts"
-            echo "...done."    
-        fi
-fi
-
-;;
+	if [ ! -d "~/recordatorios" ]; then
+		mkdir "~/recordatorios"
+		mkdir "~/recordatorios/historial"
+		mkdir "~/recordatorios/scripts"
+	fi
+	;;
 *)
 	;;
 esac

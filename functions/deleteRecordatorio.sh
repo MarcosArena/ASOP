@@ -19,7 +19,7 @@ if [ "$USER" == "root" ]
         	echo "[DELETED];$1;;$USER;;$fecha" >> ~/recordatorios/historial/history.txt
 	else
 		echo "Error de formato, no ha introducido ninguna tarea para eliminar la tarea no existe."
-		echo "user"
+		
 	fi
 else
 	if [ ! -z "$archive" ]

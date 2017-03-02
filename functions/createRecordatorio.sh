@@ -2,6 +2,8 @@
 
 #Falta checkear si el usuario existe
 
+. /recordatorios/functions/deleteRecordatorio.sh
+
 function createRecordatorio() {
 
 #Si el titulo tiene espacios, los susituimos por "_"
@@ -30,6 +32,7 @@ script=$ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
 
 # -> INICIO >> SCRIPT <-
 echo "#!/bin/bash" > $script
+echo ". /recordatorios/functions/deleteRecordatorio.sh" > $script
 echo "export DISPLAY=:0" >> $script
 echo "#Titulo: $titulo\n \n" >> $script
 echo "#Descripcion: $descripcion \n" >> $script
@@ -41,9 +44,9 @@ echo "rec=\`zenity 	--info \
         --height=300\`" >> $script
 echo " case \$? in
 	       0) 
-              rm -- "$script";;
+              delete $VALID_ID;;
            1)
-		      rm -- "$script";;
+		      delete $VALID_ID;;
 	
 	       2)
 		      echo Ha ocurrido un error inesperado...;;

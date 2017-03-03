@@ -10,51 +10,87 @@ function showHistory {
 	fi
 
 	histfile=/home/$usuario/recordatorios/historial/history.txt
-	
+	eleccion="x"
+	shopt -s nocasematch
+
 	echo ""
 	echo " Historial de tareas de "$usuario
 	echo ""
 
+	while [[ $eleccion == "x" ]]
+	do
+		echo -n " ¿Filtrar historial? (s/n) "
+		read eleccion
+
+		case $eleccion in
+			"s" ) opcion="s";;
+			"n" ) ;;
+			*) eleccion="x";;
+		esac
+	done
+
+	echo ""
+	if [[ $opcion == "s" ]]; then
+		echo -n " Introduzca una regex a buscar: "
+		read regex
+	else
+		echo " Mostrando todo el historial..."
+		regex=".*"
+	fi
+	
+	echo ""
 	printf "%-3s %-18s %-12s %-30s %-12s %-12s\n" "" "Fecha" "Accion" "Titulo" "Creado por" "Creado para"
-	echo " "
+	echo ""
 
 	eventos=$(cat $histfile)
 	numeventos=$(cat $histfile| wc -l)
 	numcreados=0
 	numedit=0
 	numelim=0
+	cont=0
 
 	OIFS=$IFS
 	IFS=$'\n'
-
+	
 	for r in $eventos
 	do
-		fecha="$(echo $r | cut -d";" -f 6,7)"
-		titulo=$(echo $r | cut -d ";" -f 3)
-		accion=$(echo $r | cut -d";" -f 1)
-		de=$(echo $r | cut -d";" -f 4)
-		para=$(echo $r | cut -d";" -f 5)
 
-		if [ -z $para ]; then
-			para=$usuario
+		if [[ $r =~ $regex ]]; then
+
+			fecha="$(echo $r | cut -d";" -f 6,7)"
+			titulo=$(echo $r | cut -d ";" -f 3)
+			accion=$(echo $r | cut -d";" -f 1)
+			de=$(echo $r | cut -d";" -f 4)
+			para=$(echo $r | cut -d";" -f 5)
+			cont=$[cont+1]
+		
+			if [ -z $para ]; then
+				para=$usuario
+			fi
+	
+			case $accion in 
+				"[CREATED]") let numcreados++ ;;
+				"[EDIT]")	let numedit++ ;;
+				"[DELETE]") let numelim++ ;;
+				*);;
+			esac
+
+			printf "%-3s %-18s %-12s %-30s %-12s %-12s\n" "${cont}" "${fecha:0:18}" "${accion:0:20}" "${titulo:0:30}" "${de:0:12}" "${para:0:12}"
 		fi
 
-		case $accion in 
-			"[CREATED]") let numcreados++ ;;
-			"[EDIT]")	let numedit++ ;;
-			"[DELETE]") let numelim++ ;;
-			*);;
-		esac
-
-		printf "%-3s %-18s %-12s %-30s %-12s %-12s\n" " *" "${fecha:0:18}" "${accion:0:20}" "${titulo:0:30}" "${de:0:12}" "${para:0:12}"
 	done
 
-	IFS=$OIFS
-	echo " "
-	echo " Número total de eventos: "$numeventos" (Creados: "$numcreados", ediciones: "$numedit", eliminaciones: "$numelim")"
-	echo " "
+	if [ $cont -le 0 ]; then
+		echo " No se han encontrado eventos que coincidan con el patrón de búsqueda"
+	else
+		IFS=$OIFS
+		echo " "
+		echo " Total: "$cont" (Creados: "$numcreados", ediciones: "$numedit", eliminaciones: "$numelim")"
+	fi
+
+	echo ""
 	echo " Fin de lista de recordatorios"
-	echo " "
+	echo ""
 
 }
 

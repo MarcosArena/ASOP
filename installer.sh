@@ -15,6 +15,12 @@ if [ "$USER" = "root" ];
 	 mkdir /recordatorios/historial
 	 chmod 777 /recordatorios/historial
 	 mkdir /recordatorios/scripts
+	#Movemos nuestro script dentro de la estructura
+	 mv functions/ /recordatorios
+	 #chmod 777 /recordatorios/functions/*
+	 mv recordatorios.sh /recordatorios/
+	 chmod 777 /recordatorios/recordatorios.sh
+	 
 
 else
 echo "Se necesitan privilegios de administrador para realizar la instalación de esta herramienta"

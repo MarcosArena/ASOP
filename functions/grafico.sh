@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #Autor: German
 
 function grafico(){
@@ -43,4 +42,3 @@ function grafico(){
 	#Una vez terminado eliminamos los archivos auxiliares utilizados.
 	rm /recordatorios/historial/.users.txt /recordatorios/historial/.test.txt /recordatorios/historial/.users2.txt
 }
-grafico

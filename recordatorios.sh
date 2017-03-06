@@ -12,6 +12,7 @@
 . ./functions/z_menu.sh
 . ./functions/listAll.sh
 . ./functions/showHistory.sh
+. ./functions/grafico.sh
 
 if [ ! -d ~/recordatorios ]; then #comprobamos si existe ~/recordatorios
 		#Si no existe entrará en el if y creará los archivos necesarios
@@ -126,8 +127,8 @@ case $1 in
 			fi
 		fi
 		;;
-	-c)
-		echo "consultas"
+	-g)
+		grafico
 		;;
 	"")
 		z_menu
@@ -146,8 +147,7 @@ case $1 in
 		echo -e "                [usuario]"
 		echo -e "     -l: Lista los recordatorios pendientes"
 		echo -e "                [usuario]"
-		echo -e "     -c: consultar"
-		echo -e "                sintaxis"
+		echo -e "     -g: Muestra de manera visual la cantidad de recordatorios de cada usuario"
 		;;
 	*)
 		echo "El parametro introducido no es correcto, pruebe a ejecutar recordatorios -h"

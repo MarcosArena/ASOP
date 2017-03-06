@@ -94,47 +94,47 @@ function printtable {
 
 
 
-if [ $UID == '0' ] 
-then
+#if [ $UID == '0' ] 
+#then
 
 
 
-	if [ -z $1 ]
-	then
-		echo "Debes introducir un nombre de usuario"
-		exit
-	fi
+#	if [ -z $1 ]
+#	then
+#		echo "Debes introducir un nombre de usuario"
+#		exit
+#	fi
 	
-	archivos=$(grepfiles "/home/$1")
+#	archivos=$(grepfiles "/home/$1")
 	
-	if [[ $archivos =~ \* ]]
-	then
-		echo "No se han encontrado recordatorios"
-		exit
-	else 
-		printtable "$archivos"
-	fi
+#	if [[ $archivos =~ \* ]]
+#	then
+#		echo "No se han encontrado recordatorios"
+#		exit
+#	else 
+#		printtable "$archivos"
+#	fi
 
-else
-
-
-	if [[ -n $* ]] && [[ $* -ne "$USER" ]]
-	then
-		echo "No puedes ver los recordatorios de otros usuarios"
-		exit
-	fi
-
-	archivos=$(grepfiles ~)
-
-	if [[ $archivos =~ \* ]]
-	then
-		echo "No se han encontrado recordatorios"
-		exit
-	else 
-		printtable "$archivos"
-	fi
+#else
 
 
-fi
+#	if [[ -n $* ]] && [[ $* -ne "$USER" ]]
+#	then
+#		echo "No puedes ver los recordatorios de otros usuarios"
+#		exit
+#	fi
+
+#	archivos=$(grepfiles ~)
+
+#	if [[ $archivos =~ \* ]]
+#	then
+#		echo "No se han encontrado recordatorios"
+#		exit
+#	else 
+#		printtable "$archivos"
+#	fi
+
+
+#fi
 
 

@@ -17,7 +17,7 @@ if [ "$USER" = "root" ];
 	 mkdir /recordatorios/scripts
 	#Movemos nuestro script dentro de la estructura
 	 mv functions/ /recordatorios
-	 chmod 777 /recordatorios/functions/*
+	 #chmod 777 /recordatorios/functions/*
 	 mv recordatorios.sh /recordatorios/
 	 chmod 777 /recordatorios/recordatorios.sh
 	 

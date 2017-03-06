@@ -30,12 +30,15 @@ ruta_history_root="/recordatorios/historial"
 #Asignamos la ruta completa del script a $script
 script=$ruta_script/"$tituloWithUnder"_"$VALID_ID".sh
 
+fecha=$(date +'%s')
+
 # -> INICIO >> SCRIPT <-
 echo "#!/bin/bash" > $script
 echo ". /recordatorios/functions/deleteRecordatorio.sh" > $script
 echo "export DISPLAY=:0" >> $script
 echo "#Titulo: $titulo\n \n" >> $script
 echo "#Descripcion: $descripcion \n" >> $script
+echo "#Fecha: $fecha \n" >> $script
 
 echo "rec=\`zenity 	--info \
 		--title=\"$titulo\" \
